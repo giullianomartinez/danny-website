@@ -145,6 +145,9 @@ button:focus-visible {
 }
 
 .hero-portrait {
+  inset: 15%;
+  width: auto;
+  height: auto;
   object-fit: cover;
   object-position: center;
   opacity: 0.5;
