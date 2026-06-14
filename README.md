@@ -12,7 +12,7 @@ https://dvjdanny.vercel.app
 
 ## Sobre El Proyecto
 
-Este sitio presenta la identidad, servicios y propuesta de DVJ Danny en una experiencia directa, visual y orientada al contacto.
+Este sitio presenta la identidad, servicios y propuesta en una experiencia directa, visual y orientada al contacto.
 
 La página está pensada para personas, marcas y productoras que necesitan un servicio capaz de unir música, lectura de pista, puesta en escena y criterio audiovisual para eventos privados, matrimonios, celebraciones, activaciones y contenido para redes.
 
