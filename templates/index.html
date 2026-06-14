@@ -11,14 +11,18 @@
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <header class="site-header" aria-label="Navegacion principal">
-      <a class="brand" href="#inicio">{{ landing.artist }}</a>
-      <nav class="nav">
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span>D</span>
+        {{ landing.artist }}
+      </a>
+      <nav class="nav" aria-label="Navegacion principal">
         <a href="#servicios">Servicios</a>
         <a href="#paquetes">Paquetes</a>
+        <a href="#proceso">Proceso</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <a class="header-cta" href="https://wa.me/56900000000">Reservar fecha</a>
+      <a class="header-cta" href="{{ landing.whatsapp_url }}">Reservar fecha</a>
     </header>
 
     <main id="inicio">
@@ -29,15 +33,21 @@
           alt="Cabina de DJ y equipo de edicion audiovisual en ambiente nocturno inspirado en Iquique"
         >
         <div class="hero-shade"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-content">
-          <p class="eyebrow">{{ landing.location }}</p>
+          <p class="eyebrow">{{ landing.location }} / {{ landing.kicker }}</p>
           <h1>{{ landing.artist }}</h1>
           <p class="hero-copy">{{ landing.tagline }}</p>
           <div class="hero-actions">
-            <a class="button primary" href="https://wa.me/56900000000">Cotizar evento</a>
+            <a class="button primary" href="{{ landing.whatsapp_url }}">Cotizar por WhatsApp</a>
             <a class="button secondary" href="#servicios">Ver servicios</a>
           </div>
         </div>
+        <aside class="cue-sheet" aria-label="Resumen rapido">
+          <p>Disponible para</p>
+          <strong>Eventos privados / marcas / productoras</strong>
+          <span>DJ set + visuales + video</span>
+        </aside>
       </section>
 
       <section class="stats-band" aria-label="Indicadores de trayectoria">
@@ -54,22 +64,18 @@
           <p class="eyebrow">Trayectoria</p>
           <h2>Un show pensado para sonar bien, verse bien y quedar registrado.</h2>
         </div>
-        <p>
-          {{ landing.summary }} La propuesta combina seleccion musical,
-          experiencia en vivo y criterio audiovisual para que cada evento tenga
-          energia, presencia y material util despues de la noche.
-        </p>
+        <p>{{ landing.summary }}</p>
       </section>
 
       <section id="servicios" class="section">
         <div class="section-heading">
           <p class="eyebrow">Servicios</p>
-          <h2>Musica y video para eventos con identidad.</h2>
+          <h2>Musica y video para eventos con pulso propio.</h2>
         </div>
         <div class="service-grid">
           {% for service in landing.services %}
             <article class="service-card">
-              <span class="service-index">0{{ loop.index }}</span>
+              <span class="service-index">{{ service.signal }}</span>
               <h3>{{ service.title }}</h3>
               <p>{{ service.body }}</p>
             </article>
@@ -80,13 +86,14 @@
       <section id="paquetes" class="packages section">
         <div class="section-heading">
           <p class="eyebrow">Paquetes</p>
-          <h2>Opciones simples para partir una cotizacion.</h2>
+          <h2>Tres puntos de partida para conversar la fecha.</h2>
         </div>
         <div class="package-grid">
           {% for package in landing.packages %}
             <article class="package-card">
               <h3>{{ package.name }}</h3>
               <strong>{{ package.price }}</strong>
+              <p>{{ package.fit }}</p>
               <ul>
                 {% for item in package["items"] %}
                   <li>{{ item }}</li>
@@ -97,14 +104,17 @@
         </div>
       </section>
 
-      <section class="process section">
+      <section id="proceso" class="process section">
         <div class="section-heading">
           <p class="eyebrow">Proceso</p>
           <h2>De la idea al evento sin vueltas.</h2>
         </div>
         <ol class="timeline">
           {% for step in landing.timeline %}
-            <li>{{ step }}</li>
+            <li>
+              <strong>{{ step.title }}</strong>
+              <span>{{ step.body }}</span>
+            </li>
           {% endfor %}
         </ol>
       </section>
@@ -117,7 +127,7 @@
         <div class="testimonial-grid">
           {% for testimonial in landing.testimonials %}
             <blockquote>
-              <p>"{{ testimonial.quote }}"</p>
+              <p>{{ testimonial.quote }}</p>
               <cite>{{ testimonial.author }}</cite>
             </blockquote>
           {% endfor %}
@@ -133,7 +143,7 @@
             musica, video o una produccion completa.
           </p>
         </div>
-        <a class="button primary" href="https://wa.me/56900000000">Hablar por WhatsApp</a>
+        <a class="button primary" href="{{ landing.whatsapp_url }}">Hablar por WhatsApp</a>
       </section>
     </main>
   </body>
