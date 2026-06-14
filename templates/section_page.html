@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Soy {{ landing.artist }} en Iquique: preparo música, visuales y video para eventos."
+      content="{{ landing.artist }} en Iquique: música, visuales y video para eventos."
     >
     <title>
       {% if page == "servicios" %}Servicios{% elif page == "paquetes" %}Paquetes{% elif page == "proceso" %}Proceso{% else %}Contacto{% endif %}
@@ -27,15 +27,15 @@
         <a href="/proceso">Proceso</a>
         <a href="/contacto">Contacto</a>
       </nav>
-      <a class="header-cta" href="{{ landing.whatsapp_url }}">Reservar conmigo</a>
+      <a class="header-cta" href="{{ landing.whatsapp_url }}">Reservar fecha</a>
     </header>
 
     <main class="subpage">
       {% if page == "servicios" %}
         <section class="page-hero">
           <p class="eyebrow">Servicios</p>
-          <h1>Preparo música, visuales y video para cada evento.</h1>
-          <p>Con los datos del evento preparo una propuesta clara para la fecha.</p>
+          <h1>Música, visuales y video para cada evento.</h1>
+          <p>Con los datos del evento se arma una propuesta clara para la fecha.</p>
         </section>
         <section class="section page-section">
           <div class="service-grid">
@@ -51,8 +51,8 @@
       {% elif page == "paquetes" %}
         <section class="page-hero">
           <p class="eyebrow">Paquetes</p>
-          <h1>Armo una propuesta que calce con cada fecha.</h1>
-          <p>Uso estos valores como punto de partida para ordenar la conversación y cotizar sin vueltas.</p>
+          <h1>Una propuesta que calce con cada fecha.</h1>
+          <p>Estos valores funcionan como punto de partida para ordenar la conversación y cotizar sin vueltas.</p>
         </section>
         <section class="section page-section">
           <div class="package-grid">
@@ -73,8 +73,8 @@
       {% elif page == "proceso" %}
         <section class="page-hero">
           <p class="eyebrow">Proceso</p>
-          <h1>Ordeno la idea y llego al evento sin vueltas.</h1>
-          <p>Trabajo para llegar con todo conversado, ordenado y listo para que el evento fluya.</p>
+          <h1>De la idea al evento sin vueltas.</h1>
+          <p>La idea es llegar con todo conversado, ordenado y listo para que el evento fluya.</p>
         </section>
         <section class="section page-section">
           <ol class="timeline">
@@ -90,7 +90,7 @@
         <section class="page-hero">
           <p class="eyebrow">Contacto</p>
           <h1>Hablemos de la fecha.</h1>
-          <p>Recibo el tipo de evento, fecha, horario, lugar y si la fecha necesita música, visuales, video o una producción completa.</p>
+          <p>Envía el tipo de evento, fecha, horario, lugar y si la fecha necesita música, visuales, video o una producción completa.</p>
           <p class="social-note">{{ landing.tiktok.body }}</p>
           <div class="hero-actions">
             <a class="button primary" href="{{ landing.whatsapp_url }}">Escribirme por WhatsApp</a>
