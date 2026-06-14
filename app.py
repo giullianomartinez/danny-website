@@ -38,6 +38,10 @@ def create_app(settings: Settings | None = None) -> Flask:
     def paquetes_page():
         return render_template("section_page.html", landing=landing, page="paquetes")
 
+    @app.get("/videos")
+    def videos_page():
+        return render_template("section_page.html", landing=landing, page="videos")
+
     @app.get("/proceso")
     def proceso_page():
         return render_template("section_page.html", landing=landing, page="proceso")

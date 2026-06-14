@@ -45,6 +45,26 @@ LANDING = {
             ),
         },
     ],
+    "videos": [
+        {
+            "type": "En vivo",
+            "title": "Live mezclando 01",
+            "body": "Sesion en vivo mezclando para mostrar lectura musical, energia y estilo DVJ.",
+            "url": "https://vt.tiktok.com/ZSQC1wdD9/",
+        },
+        {
+            "type": "En vivo",
+            "title": "Live mezclando 02",
+            "body": "Otra muestra en directo con mezcla musical y ritmo para eventos.",
+            "url": "https://vt.tiktok.com/ZSQC1tHbP/",
+        },
+        {
+            "type": "Trabajo",
+            "title": "Video trabajando",
+            "body": "Registro de trabajo audiovisual para mostrar produccion, contenido y experiencia en terreno.",
+            "url": "https://vt.tiktok.com/ZSQCJMFeb/",
+        },
+    ],
     "packages": [
         {
             "name": "Evento Esencial",
