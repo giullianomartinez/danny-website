@@ -145,10 +145,10 @@ button:focus-visible {
 }
 
 .hero-portrait {
-  inset: 10% 15% 20%;
+  inset: 12% 30% 30%;
   width: auto;
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   opacity: 0.5;
   filter: saturate(1.08) contrast(1.04);
@@ -702,7 +702,7 @@ cite {
   }
 
   .hero-portrait {
-    inset: 8% 8% 34%;
+    inset: 10% 18% 44%;
     object-position: center 28%;
     -webkit-mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.68) 61%, transparent 84%);
     mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.68) 61%, transparent 84%);
@@ -796,7 +796,7 @@ cite {
   }
 
   .hero-portrait {
-    inset: 7% 6% 38%;
+    inset: 10% 16% 48%;
     object-position: center 24%;
   }
 
