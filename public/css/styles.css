@@ -145,16 +145,16 @@ button:focus-visible {
 }
 
 .hero-portrait {
-  left: auto;
-  right: clamp(18px, 7vw, 110px);
-  width: min(42vw, 470px);
-  height: min(82%, 720px);
-  align-self: center;
+  top: clamp(90px, 15vh, 150px);
+  left: clamp(44px, 10vw, 150px);
+  right: auto;
+  width: min(34vw, 390px);
+  height: min(58vh, 520px);
   object-fit: cover;
   object-position: center 38%;
-  opacity: 0.34;
-  filter: saturate(1.12) contrast(1.08);
-  mix-blend-mode: screen;
+  opacity: 0.75;
+  filter: saturate(1.08) contrast(1.04);
+  mix-blend-mode: normal;
   mask-image: linear-gradient(90deg, transparent 0%, black 16%, black 78%, transparent 100%);
 }
 
@@ -703,11 +703,13 @@ cite {
   }
 
   .hero-portrait {
-    right: -16px;
-    width: min(70vw, 360px);
-    height: 76%;
+    top: 92px;
+    left: 26px;
+    right: auto;
+    width: min(62vw, 330px);
+    height: 46vh;
     object-position: center 36%;
-    opacity: 0.27;
+    opacity: 0.75;
   }
 
   h1 {
@@ -795,6 +797,13 @@ cite {
   .hero {
     padding-top: 54px;
     padding-bottom: 48px;
+  }
+
+  .hero-portrait {
+    top: 92px;
+    left: 18px;
+    width: min(70vw, 310px);
+    height: 42vh;
   }
 
   .hero-actions,
