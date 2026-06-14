@@ -147,7 +147,7 @@ button:focus-visible {
 .hero-portrait {
   object-fit: cover;
   object-position: center;
-  opacity: 0.65;
+  opacity: 0.5;
   filter: saturate(1.08) contrast(1.04);
   mix-blend-mode: normal;
 }
