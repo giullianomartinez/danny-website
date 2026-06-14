@@ -1,7 +1,7 @@
 LANDING = {
     "artist": "Danny DJ",
     "location": "Iquique, Chile",
-    "kicker": "DJ, visuales en vivo y edicion audiovisual",
+    "kicker": "DJ + video + visuales",
     "tagline": "Musica con lectura de pista y contenido que sigue trabajando despues del evento.",
     "summary": (
         "Danny cruza oficio de cabina, criterio audiovisual y energia nortina para "
