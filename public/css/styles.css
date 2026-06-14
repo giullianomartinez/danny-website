@@ -145,7 +145,7 @@ button:focus-visible {
 }
 
 .hero-portrait {
-  inset: 15%;
+  inset: 10% 15% 20%;
   width: auto;
   height: auto;
   object-fit: cover;
@@ -153,6 +153,8 @@ button:focus-visible {
   opacity: 0.5;
   filter: saturate(1.08) contrast(1.04);
   mix-blend-mode: normal;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0, 0, 0, 0.72) 64%, transparent 82%);
+  mask-image: radial-gradient(ellipse at center, #000 48%, rgba(0, 0, 0, 0.72) 64%, transparent 82%);
 }
 
 .hero-shade {
@@ -700,7 +702,10 @@ cite {
   }
 
   .hero-portrait {
-    object-position: center;
+    inset: 8% 8% 34%;
+    object-position: center 28%;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.68) 61%, transparent 84%);
+    mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.68) 61%, transparent 84%);
   }
 
   h1 {
@@ -788,6 +793,11 @@ cite {
   .hero {
     padding-top: 54px;
     padding-bottom: 48px;
+  }
+
+  .hero-portrait {
+    inset: 7% 6% 38%;
+    object-position: center 24%;
   }
 
   .hero-actions,
