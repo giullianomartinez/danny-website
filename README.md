@@ -35,6 +35,37 @@ python app.py
 
 Luego abre `http://127.0.0.1:5000`.
 
+## Backend
+
+La app expone endpoints JSON para que el frontend pueda leer contenido y enviar
+solicitudes de contacto.
+
+- `GET /api/health`: confirma que el servicio esta activo.
+- `GET /api/landing`: entrega el contenido editable de la landing.
+- `POST /api/contact`: recibe solicitudes y las guarda localmente en JSONL.
+
+Ejemplo de contacto:
+
+```powershell
+Invoke-RestMethod `
+  -Method Post `
+  -Uri http://127.0.0.1:5000/api/contact `
+  -ContentType "application/json" `
+  -Body '{"name":"Cliente Demo","contact":"+56 9 1234 5678","message":"Necesito DJ para un evento","event_type":"Matrimonio","services":["DJ","Aftermovie"]}'
+```
+
+Variables opcionales:
+
+- `WHATSAPP_NUMBER`: numero usado para generar el enlace `wa.me`.
+- `LEAD_STORAGE_PATH`: ruta donde se guardan los leads. Por defecto usa
+  `instance/contact_leads.jsonl`.
+
+## Tests
+
+```powershell
+python -m unittest discover
+```
+
 ## Deploy en Vercel
 
 Esta app esta lista para Vercel como proyecto Flask. Vercel detecta `Flask`

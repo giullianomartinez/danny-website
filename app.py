@@ -1,75 +1,61 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template, request
+
+from backend.config import Settings
+from backend.content import LANDING
+from backend.leads import LeadValidationError, create_lead, lead_to_whatsapp_url
 
 
-app = Flask(__name__, static_folder="public", static_url_path="")
+WHATSAPP_NUMBER = "56900000000"
+WHATSAPP_MESSAGE = (
+    "Hola Danny, quiero cotizar un evento. "
+    "Fecha: ___ / Lugar: ___ / Tipo de evento: ___"
+)
 
 
-LANDING = {
-    "artist": "Danny DJ",
-    "location": "Iquique, Chile",
-    "tagline": "Musica en vivo, visuales y edicion con trayectoria nortina.",
-    "summary": (
-        "Landing page para un DJ con anos de experiencia en eventos, fiestas, "
-        "matrimonios, activaciones y produccion audiovisual en Iquique."
-    ),
-    "stats": [
-        {"value": "+12", "label": "anos de trayectoria"},
-        {"value": "+500", "label": "eventos musicalizados"},
-        {"value": "4K", "label": "edicion y contenido social"},
-    ],
-    "services": [
-        {
-            "title": "DJ para eventos",
-            "body": "Sesiones adaptadas al publico, lectura de pista, mezcla continua y sonido profesional para celebraciones privadas o corporativas.",
-        },
-        {
-            "title": "Video y aftermovie",
-            "body": "Edicion dinamica para reels, clips promocionales, resumen de eventos y contenido listo para redes sociales.",
-        },
-        {
-            "title": "Visuales en vivo",
-            "body": "Musica y video coordinados para elevar la energia del show con pantallas, loops, intros y recursos personalizados.",
-        },
-    ],
-    "packages": [
-        {
-            "name": "Evento Esencial",
-            "price": "Desde $180.000",
-            "items": ["DJ set hasta 3 horas", "Playlist curada", "Coordinacion previa"],
-        },
-        {
-            "name": "Full Party",
-            "price": "Desde $320.000",
-            "items": ["DJ set extendido", "Sonido e iluminacion base", "Registro audiovisual corto"],
-        },
-        {
-            "name": "Pro Visual",
-            "price": "A medida",
-            "items": ["Visuales en vivo", "Aftermovie editado", "Contenido vertical para RRSS"],
-        },
-    ],
-    "timeline": [
-        "Brief del evento y estilo musical",
-        "Propuesta de show, duracion y recursos",
-        "Coordinacion tecnica con el lugar",
-        "Presentacion en vivo y entrega de contenido",
-    ],
-    "testimonials": [
-        {
-            "quote": "Se noto la experiencia desde el primer minuto. La pista nunca bajo.",
-            "author": "Evento privado, Iquique",
-        },
-        {
-            "quote": "El video quedo rapido, moderno y perfecto para redes.",
-            "author": "Marca local",
-        },
-    ],
-}
+def create_app(settings: Settings | None = None) -> Flask:
+    settings = settings or Settings.from_env()
+    app = Flask(__name__, static_folder="public", static_url_path="")
+
+    landing = {
+        **LANDING,
+        "whatsapp_url": (
+            "https://wa.me/"
+            + settings.whatsapp_number
+            + "?text="
+            + WHATSAPP_MESSAGE.replace(" ", "%20")
+        ),
+    }
+
+    @app.route("/")
+    def home():
+        return render_template("index.html", landing=landing)
+
+    @app.get("/api/health")
+    def health():
+        return jsonify({"status": "ok"})
+
+    @app.get("/api/landing")
+    def landing_content():
+        return jsonify(landing)
+
+    @app.post("/api/contact")
+    def contact():
+        try:
+            lead = create_lead(request.get_json(silent=True) or {}, settings)
+        except LeadValidationError as exc:
+            return jsonify({"error": str(exc)}), 400
+
+        return jsonify(
+            {
+                "lead": lead.public_dict(),
+                "whatsapp_url": lead_to_whatsapp_url(lead, settings),
+            }
+        ), 201
+
+    return app
 
 
-@app.route("/")
-def home():
-    return render_template("index.html", landing=LANDING)
+app = create_app()
 
 
 if __name__ == "__main__":
