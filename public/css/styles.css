@@ -140,13 +140,17 @@ button:focus-visible {
 
 .hero-image {
   object-fit: cover;
-  object-position: center;
+  object-position: 72% 42%;
+  opacity: 0.58;
+  filter: saturate(1.12) contrast(1.08);
+  mix-blend-mode: screen;
 }
 
 .hero-shade {
   background:
-    linear-gradient(90deg, rgba(8, 7, 11, 0.94) 0%, rgba(8, 7, 11, 0.72) 42%, rgba(8, 7, 11, 0.08) 100%),
-    linear-gradient(180deg, rgba(8, 7, 11, 0.1) 42%, var(--ink) 100%);
+    radial-gradient(circle at 76% 40%, rgba(241, 66, 154, 0.18), transparent 24rem),
+    linear-gradient(90deg, rgba(8, 7, 11, 0.98) 0%, rgba(8, 7, 11, 0.82) 44%, rgba(8, 7, 11, 0.36) 100%),
+    linear-gradient(180deg, rgba(8, 7, 11, 0.12) 38%, var(--ink) 100%);
 }
 
 .hero-grid {
@@ -678,8 +682,13 @@ cite {
 
   .hero-shade {
     background:
-      linear-gradient(90deg, rgba(8, 7, 11, 0.95), rgba(8, 7, 11, 0.5)),
+      linear-gradient(90deg, rgba(8, 7, 11, 0.96), rgba(8, 7, 11, 0.62)),
       linear-gradient(180deg, rgba(8, 7, 11, 0.14) 44%, var(--ink) 100%);
+  }
+
+  .hero-image {
+    object-position: 64% center;
+    opacity: 0.46;
   }
 
   h1 {
