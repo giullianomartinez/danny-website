@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Landing page para DJ y editor de video en Iquique con anos de trayectoria en eventos y contenido audiovisual."
+    >
+    <title>{{ landing.artist }} | DJ y Video en Iquique</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Navegacion principal">
+      <a class="brand" href="#inicio">{{ landing.artist }}</a>
+      <nav class="nav">
+        <a href="#servicios">Servicios</a>
+        <a href="#paquetes">Paquetes</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="header-cta" href="https://wa.me/56900000000">Reservar fecha</a>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <img
+          class="hero-image"
+          src="/img/hero-dj-iquique.png"
+          alt="Cabina de DJ y equipo de edicion audiovisual en ambiente nocturno inspirado en Iquique"
+        >
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">{{ landing.location }}</p>
+          <h1>{{ landing.artist }}</h1>
+          <p class="hero-copy">{{ landing.tagline }}</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://wa.me/56900000000">Cotizar evento</a>
+            <a class="button secondary" href="#servicios">Ver servicios</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-band" aria-label="Indicadores de trayectoria">
+        {% for stat in landing.stats %}
+          <article class="stat">
+            <strong>{{ stat.value }}</strong>
+            <span>{{ stat.label }}</span>
+          </article>
+        {% endfor %}
+      </section>
+
+      <section class="intro section">
+        <div>
+          <p class="eyebrow">Trayectoria</p>
+          <h2>Un show pensado para sonar bien, verse bien y quedar registrado.</h2>
+        </div>
+        <p>
+          {{ landing.summary }} La propuesta combina seleccion musical,
+          experiencia en vivo y criterio audiovisual para que cada evento tenga
+          energia, presencia y material util despues de la noche.
+        </p>
+      </section>
+
+      <section id="servicios" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Servicios</p>
+          <h2>Musica y video para eventos con identidad.</h2>
+        </div>
+        <div class="service-grid">
+          {% for service in landing.services %}
+            <article class="service-card">
+              <span class="service-index">0{{ loop.index }}</span>
+              <h3>{{ service.title }}</h3>
+              <p>{{ service.body }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section id="paquetes" class="packages section">
+        <div class="section-heading">
+          <p class="eyebrow">Paquetes</p>
+          <h2>Opciones simples para partir una cotizacion.</h2>
+        </div>
+        <div class="package-grid">
+          {% for package in landing.packages %}
+            <article class="package-card">
+              <h3>{{ package.name }}</h3>
+              <strong>{{ package.price }}</strong>
+              <ul>
+                {% for item in package["items"] %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="process section">
+        <div class="section-heading">
+          <p class="eyebrow">Proceso</p>
+          <h2>De la idea al evento sin vueltas.</h2>
+        </div>
+        <ol class="timeline">
+          {% for step in landing.timeline %}
+            <li>{{ step }}</li>
+          {% endfor %}
+        </ol>
+      </section>
+
+      <section class="proof section">
+        <div class="section-heading">
+          <p class="eyebrow">Confianza</p>
+          <h2>Comentarios que venden experiencia real.</h2>
+        </div>
+        <div class="testimonial-grid">
+          {% for testimonial in landing.testimonials %}
+            <blockquote>
+              <p>"{{ testimonial.quote }}"</p>
+              <cite>{{ testimonial.author }}</cite>
+            </blockquote>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section id="contacto" class="contact">
+        <div>
+          <p class="eyebrow">Contacto</p>
+          <h2>Agenda una fecha en Iquique y alrededores.</h2>
+          <p>
+            Envia el tipo de evento, fecha, horario, lugar y si necesitas solo
+            musica, video o una produccion completa.
+          </p>
+        </div>
+        <a class="button primary" href="https://wa.me/56900000000">Hablar por WhatsApp</a>
+      </section>
+    </main>
+  </body>
+</html>
