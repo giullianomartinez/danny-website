@@ -10,6 +10,8 @@ https://dvjdanny.vercel.app
 
 [![Vista previa de dvjdanny.vercel.app](public/img/site-preview.png)](https://dvjdanny.vercel.app)
 
+Imagen de fondo: [Iquique night skyline](https://commons.wikimedia.org/wiki/File:Iquique_night_skyline.jpg), por `<F.J>`, disponible bajo licencia [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
+
 ## Sobre El Proyecto
 
 Este sitio presenta la identidad, servicios y propuesta en una experiencia directa, visual y orientada al contacto.
