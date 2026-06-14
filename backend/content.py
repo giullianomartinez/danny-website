@@ -7,7 +7,7 @@ LANDING = {
         "url": "https://www.tiktok.com/@dvj._dannyiqq",
         "body": "También hago lives en TikTok; ahí muestro parte de mi estilo y contenido en movimiento.",
     },
-    "tagline": "Música con lectura de pista y contenido que sigue trabajando después del evento.",
+    "tagline": "Música con lectura de pista.",
     "summary": (
         "Cada evento tiene su propio ritmo. La música se prepara con tiempo "
         "y en la pista se ajusta al ambiente para acompañar los momentos "
@@ -17,7 +17,7 @@ LANDING = {
     "stats": [
         {"value": "+12", "label": "años tocando eventos en el norte"},
         {"value": "+500", "label": "pistas, matrimonios y activaciones"},
-        {"value": "4K", "label": "edición para videos verticales y resúmenes"},
+        {"value": "4K", "label": "edición para videos y resúmenes"},
     ],
     "services": [
         {
@@ -30,10 +30,10 @@ LANDING = {
         },
         {
             "signal": "Corte",
-            "title": "Video y resumen del evento",
+            "title": "Edición de video",
             "body": (
-                "Edición dinámica para recordar lo mejor del evento, preparar "
-                "videos verticales y dejar contenido listo para publicar."
+                "También hago trabajos solo de edición: videos para redes, "
+                "resúmenes de eventos y piezas listas para publicar."
             ),
         },
         {
@@ -48,13 +48,13 @@ LANDING = {
     "packages": [
         {
             "name": "Evento Esencial",
-            "price": "Desde $180.000",
+            "price": "Desde $80.000",
             "fit": "Recomendado para cumpleaños, celebraciones privadas y eventos pequeños.",
             "items": ["Presentación DVJ hasta 3 horas", "Lista musical preparada", "Coordinación previa"],
         },
         {
             "name": "Fiesta Completa",
-            "price": "Desde $320.000",
+            "price": "Desde $150.000",
             "fit": "Pensado para matrimonios, empresas y fiestas con mayor producción.",
             "items": [
                 "Presentación DVJ extendida",
