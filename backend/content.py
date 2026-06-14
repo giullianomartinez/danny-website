@@ -1,41 +1,47 @@
 LANDING = {
-    "artist": "Danny DJ",
+    "artist": "DVJ Danny",
     "location": "Iquique, Chile",
-    "kicker": "DJ + video + visuales",
-    "tagline": "Musica con lectura de pista y contenido que sigue trabajando despues del evento.",
+    "kicker": "DVJ + video + visuales",
+    "tiktok": {
+        "handle": "dvj._dannyiqq",
+        "url": "https://www.tiktok.com/@dvj._dannyiqq",
+        "body": "También hace lives en TikTok; ahí puedes ver parte de su estilo y contenido en movimiento.",
+    },
+    "tagline": "Música con lectura de pista y contenido que sigue trabajando después del evento.",
     "summary": (
-        "Danny cruza oficio de cabina, criterio audiovisual y energia nortina para "
-        "eventos privados, marcas y productoras que necesitan que la noche suene "
-        "profesional y tambien deje piezas listas para redes."
+        "Cada evento tiene su propio ritmo. Danny prepara la música con tiempo "
+        "y en la pista va leyendo el ambiente para acompañar los momentos "
+        "importantes, levantar la energía cuando hace falta y dejar recuerdos "
+        "que se sientan cercanos."
     ),
     "stats": [
-        {"value": "+12", "label": "anos tocando eventos en el norte"},
+        {"value": "+12", "label": "años tocando eventos en el norte"},
         {"value": "+500", "label": "pistas, matrimonios y activaciones"},
-        {"value": "4K", "label": "edicion para reels, clips y aftermovies"},
+        {"value": "4K", "label": "edición para videos verticales y resúmenes"},
     ],
     "services": [
         {
             "signal": "Cabina",
-            "title": "DJ para eventos",
+            "title": "DVJ para eventos",
             "body": (
-                "Set curado por momento de la noche, mezcla continua, lectura "
-                "de pista y coordinacion previa para entrar con seguridad."
+                "La música se prepara contigo antes del evento y se ajusta en "
+                "vivo según la pista."
             ),
         },
         {
             "signal": "Corte",
-            "title": "Video y aftermovie",
+            "title": "Video y resumen del evento",
             "body": (
-                "Edicion dinamica para resumen de eventos, reels verticales, "
-                "piezas promocionales y contenido listo para publicar."
+                "Edición dinámica para recordar lo mejor del evento, preparar "
+                "videos verticales y dejar contenido listo para publicar."
             ),
         },
         {
             "signal": "Pantalla",
             "title": "Visuales en vivo",
             "body": (
-                "Loops, intros, recursos personalizados y sincronizacion "
-                "visual para reforzar la energia del show."
+                "Visuales e intros preparados para la presentación, con la "
+                "posibilidad de sumar máquinas de humo."
             ),
         },
     ],
@@ -43,56 +49,56 @@ LANDING = {
         {
             "name": "Evento Esencial",
             "price": "Desde $180.000",
-            "fit": "Cumpleanos, celebraciones privadas y eventos pequenos.",
-            "items": ["DJ set hasta 3 horas", "Playlist curada", "Coordinacion previa"],
+            "fit": "Cumpleaños, celebraciones privadas y eventos pequeños.",
+            "items": ["Presentación DVJ hasta 3 horas", "Lista musical preparada", "Coordinación previa"],
         },
         {
-            "name": "Full Party",
+            "name": "Fiesta Completa",
             "price": "Desde $320.000",
-            "fit": "Matrimonios, empresas y fiestas con mayor produccion.",
+            "fit": "Matrimonios, empresas y fiestas con mayor producción.",
             "items": [
-                "DJ set extendido",
+                "Presentación DVJ extendida",
                 "Sonido e iluminacion base",
                 "Registro audiovisual corto",
             ],
         },
         {
-            "name": "Pro Visual",
+            "name": "Producción Visual",
             "price": "A medida",
-            "fit": "Marcas, lanzamientos y shows con pantalla.",
+            "fit": "Marcas, lanzamientos y presentaciones con pantalla.",
             "items": [
                 "Visuales en vivo",
-                "Aftermovie editado",
+                "Resumen audiovisual editado",
                 "Contenido vertical para RRSS",
             ],
         },
     ],
     "timeline": [
         {
-            "title": "Brief",
-            "body": "Tipo de evento, fecha, lugar, publico y referencias musicales.",
+            "title": "Conversación",
+            "body": "Tipo de evento, fecha, lugar, público y referencias musicales.",
         },
         {
             "title": "Ruta",
-            "body": "Propuesta de duracion, recursos, momentos clave y necesidades tecnicas.",
+            "body": "Propuesta de duración, recursos, momentos clave y necesidades técnicas.",
         },
         {
             "title": "Montaje",
-            "body": "Coordinacion con recinto, pruebas y preparacion de musica o visuales.",
+            "body": "Coordinación con recinto, pruebas y preparación de música o visuales.",
         },
         {
-            "title": "Show",
-            "body": "Presentacion en vivo y entrega del material acordado.",
+            "title": "Evento",
+            "body": "Presentación en vivo y entrega del material acordado.",
         },
     ],
     "testimonials": [
         {
-            "quote": "Se noto la experiencia desde el primer minuto. La pista nunca bajo.",
-            "author": "Evento privado, Iquique",
+            "quote": "",
+            "author": "",
         },
         {
-            "quote": "El video quedo rapido, moderno y perfecto para redes.",
-            "author": "Marca local",
+            "quote": "",
+            "author": "",
         },
     ],
 }

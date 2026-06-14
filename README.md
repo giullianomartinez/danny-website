@@ -1,6 +1,6 @@
-# Danny DJ Landing
+# DVJ Danny Landing
 
-Landing page en Python/Flask para un DJ y editor de video con trayectoria en Iquique.
+Sitio en Python/Flask para un DVJ y editor de video con trayectoria en Iquique.
 
 ## Stack
 
@@ -8,7 +8,7 @@ Landing page en Python/Flask para un DJ y editor de video con trayectoria en Iqu
 - Flask
 - Jinja templates
 - CSS responsive sin framework pesado
-- Asset hero generado para el proyecto
+- Imagen principal generada para el proyecto
 
 ## Herramientas gratis
 
@@ -20,7 +20,7 @@ No necesitas pagar por herramientas adicionales para trabajar este sitio fuera d
 - Editor recomendado: VS Code o cualquier editor de texto gratis.
 - Navegador: Chrome, Edge, Firefox o similar, gratis.
 - WhatsApp link: el enlace `wa.me` es gratis; solo debes reemplazar el numero por el real.
-- Deploy opcional: Render, PythonAnywhere o Fly.io tienen alternativas gratuitas o free tier, sujeto a sus limites vigentes.
+- Publicacion opcional: Render, PythonAnywhere o Fly.io tienen alternativas gratuitas o planes sin costo, sujeto a sus limites vigentes.
 
 El sitio no depende de servicios pagados, CDNs pagos, plantillas premium ni librerias comerciales.
 
@@ -43,6 +43,11 @@ solicitudes de contacto.
 - `GET /api/health`: confirma que el servicio esta activo.
 - `GET /api/landing`: entrega el contenido editable de la landing.
 - `POST /api/contact`: recibe solicitudes y las guarda localmente en JSONL.
+- `GET /api/openapi.json`: entrega la especificacion OpenAPI.
+- `GET /api/docs`: abre la documentacion interactiva con Swagger UI.
+
+Con el servidor corriendo, abre `http://127.0.0.1:5000/api/docs` para probar
+los endpoints desde Swagger.
 
 Ejemplo de contacto:
 
@@ -51,7 +56,7 @@ Invoke-RestMethod `
   -Method Post `
   -Uri http://127.0.0.1:5000/api/contact `
   -ContentType "application/json" `
-  -Body '{"name":"Cliente Demo","contact":"+56 9 1234 5678","message":"Necesito DJ para un evento","event_type":"Matrimonio","services":["DJ","Aftermovie"]}'
+  -Body '{"name":"Cliente Demo","contact":"+56 9 1234 5678","message":"Necesito DVJ para un evento","event_type":"Matrimonio","services":["DVJ","Resumen audiovisual"]}'
 ```
 
 Variables opcionales:
@@ -66,7 +71,7 @@ Variables opcionales:
 python -m unittest discover
 ```
 
-## Deploy en Vercel
+## Publicacion en Vercel
 
 Esta app esta lista para Vercel como proyecto Flask. Vercel detecta `Flask`
 en `requirements.txt` y usa el objeto `app` definido en `app.py`.
@@ -78,7 +83,7 @@ en `requirements.txt` y usa el objeto `app` definido en `app.py`.
 3. Ve a **Add New... > Project**.
 4. Importa el repositorio de GitHub.
 5. En la pantalla de configuracion deja:
-   - Framework Preset: **Other** o el valor detectado automaticamente.
+   - Configuracion de framework: **Other** o el valor detectado automaticamente.
    - Root Directory: `./`
    - Build Command: vacio.
    - Output Directory: vacio.
@@ -108,7 +113,7 @@ vercel dev
 
 ### Objetivo
 
-Crear una landing que convierta visitas en contactos por WhatsApp para contratar servicios de DJ, visuales en vivo y edicion de video en Iquique.
+Crear una landing que convierta visitas en contactos por WhatsApp para contratar servicios de DVJ, visuales en vivo y edicion de video en Iquique.
 
 ### Audiencia
 
@@ -121,7 +126,7 @@ Crear una landing que convierta visitas en contactos por WhatsApp para contratar
 1. Hero con propuesta clara, ubicacion y CTA.
 2. Indicadores de trayectoria para generar confianza.
 3. Presentacion del perfil y valor diferencial.
-4. Servicios: DJ, video/aftermovie y visuales en vivo.
+4. Servicios: DVJ, video/resumen del evento y visuales en vivo.
 5. Paquetes iniciales para facilitar la cotizacion.
 6. Proceso de trabajo para reducir dudas.
 7. Testimonios editables.
@@ -130,7 +135,7 @@ Crear una landing que convierta visitas en contactos por WhatsApp para contratar
 ### Siguiente iteracion
 
 - Reemplazar nombre, telefono y precios por datos reales.
-- Agregar videos o reels embebidos desde Instagram/YouTube.
+- Agregar videos o piezas verticales embebidas desde Instagram/YouTube.
 - Conectar formulario o tracking de conversiones.
 - Optimizar SEO local con palabras clave de Iquique y tipos de evento.
 - Agregar galeria con fotos reales de eventos.

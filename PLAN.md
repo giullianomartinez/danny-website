@@ -1,8 +1,8 @@
-# Planning - Landing Danny DJ
+# Planning - Landing DVJ Danny
 
 ## Objetivo
 
-Crear una landing page para un DJ y editor de video en Iquique que convierta visitas en contactos por WhatsApp para contratar servicios de musica, visuales en vivo y edicion audiovisual.
+Crear una landing page para un DVJ y editor de video en Iquique que convierta visitas en contactos por WhatsApp para contratar servicios de musica, visuales en vivo y edicion audiovisual.
 
 ## Stack
 
@@ -10,7 +10,7 @@ Crear una landing page para un DJ y editor de video en Iquique que convierta vis
 - Flask
 - Jinja templates
 - CSS responsive sin framework pesado
-- Assets locales dentro del proyecto
+- Recursos locales dentro del proyecto
 
 ## Restriccion de herramientas
 
@@ -22,7 +22,7 @@ Todas las herramientas necesarias fuera de Codex deben ser gratis:
 - Editor recomendado: VS Code o cualquier editor gratuito.
 - Navegador: Chrome, Edge, Firefox o similar.
 - WhatsApp link: gratis usando `wa.me`.
-- Deploy opcional: usar alternativas gratuitas o free tier como Render, PythonAnywhere o Fly.io, revisando sus limites vigentes.
+- Publicacion opcional: usar alternativas gratuitas o planes sin costo como Render, PythonAnywhere o Fly.io, revisando sus limites vigentes.
 
 El sitio no debe depender de servicios pagados, plantillas premium, CDNs pagos ni librerias comerciales.
 
@@ -42,8 +42,8 @@ Un servicio que combina experiencia musical, lectura de pista, puesta en escena 
 2. Indicadores de trayectoria para generar confianza.
 3. Presentacion del perfil y valor diferencial.
 4. Servicios principales:
-   - DJ para eventos.
-   - Video y aftermovie.
+   - DVJ para eventos.
+   - Video y resumen del evento.
    - Visuales en vivo.
 5. Paquetes iniciales para facilitar la cotizacion.
 6. Proceso de trabajo paso a paso.
@@ -56,7 +56,7 @@ Un servicio que combina experiencia musical, lectura de pista, puesta en escena 
 - Numero real de WhatsApp.
 - Precios reales o rangos actualizados.
 - Fotografias reales de eventos.
-- Videos o reels de muestra.
+- Videos o piezas verticales de muestra.
 - Testimonios reales.
 - Links a Instagram, YouTube, TikTok u otras redes.
 
@@ -90,13 +90,13 @@ Un servicio que combina experiencia musical, lectura de pista, puesta en escena 
 ### Fase 4 - SEO local
 
 - Optimizar titulo y descripcion.
-- Agregar keywords relacionadas con DJ en Iquique.
+- Agregar keywords relacionadas con DVJ en Iquique.
 - Crear contenido para eventos, matrimonios, fiestas y marcas locales.
 - Preparar metadatos sociales.
 
 ### Fase 5 - Publicacion
 
-- Elegir hosting gratuito o free tier.
+- Elegir alojamiento gratuito o un plan sin costo.
 - Configurar variables y entorno si aplica.
 - Probar dominio o URL publica.
 - Revisar performance y responsive final.
@@ -109,5 +109,5 @@ Un servicio que combina experiencia musical, lectura de pista, puesta en escena 
 - El hero comunica rapidamente el servicio.
 - Los CTA apuntan a WhatsApp.
 - Los textos pueden editarse facilmente desde `app.py`.
-- Los assets usados estan dentro del proyecto.
+- Los recursos usados estan dentro del proyecto.
 - El planning queda documentado en Markdown.

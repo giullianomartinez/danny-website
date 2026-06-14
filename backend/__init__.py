@@ -1,1 +1,1 @@
-"""Backend package for the Danny DJ website."""
+"""Backend package for the DVJ Danny website."""

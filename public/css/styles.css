@@ -271,16 +271,6 @@ h3 {
   line-height: 1.15;
 }
 
-.cue-sheet::after {
-  content: "";
-  display: block;
-  height: 48px;
-  margin-top: 16px;
-  background:
-    linear-gradient(90deg, var(--aqua) 7%, transparent 7% 14%, var(--magenta) 14% 28%, transparent 28% 36%, var(--amber) 36% 51%, transparent 51% 62%, var(--lava) 62% 84%, transparent 84%);
-  clip-path: polygon(0 72%, 7% 72%, 7% 28%, 14% 28%, 14% 62%, 28% 62%, 28% 16%, 36% 16%, 36% 76%, 51% 76%, 51% 36%, 62% 36%, 62% 58%, 84% 58%, 84% 24%, 100% 24%, 100% 100%, 0 100%);
-}
-
 .stats-band {
   position: relative;
   z-index: 2;
@@ -385,7 +375,6 @@ blockquote p,
 .packages {
   max-width: none;
   background:
-    linear-gradient(90deg, transparent 0 18%, rgba(241, 66, 154, 0.08) 18% 18.35%, transparent 18.35% 100%),
     linear-gradient(180deg, var(--ink), #120f18 48%, var(--ink));
 }
 
@@ -417,19 +406,7 @@ blockquote p,
 }
 
 .package-card li {
-  position: relative;
-  padding-left: 20px;
   font-weight: 800;
-}
-
-.package-card li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 10px;
-  height: 2px;
-  background: var(--magenta);
 }
 
 .timeline {
@@ -486,14 +463,18 @@ blockquote p {
   font-size: 1.15rem;
 }
 
-blockquote p::before {
+blockquote p:not(.empty-copy)::before {
   content: open-quote;
   color: var(--amber);
 }
 
-blockquote p::after {
+blockquote p:not(.empty-copy)::after {
   content: close-quote;
   color: var(--amber);
+}
+
+.empty-copy {
+  min-height: 1.6em;
 }
 
 cite {
@@ -519,6 +500,47 @@ cite {
 
 .contact h2 {
   max-width: 780px;
+}
+
+.social-note {
+  max-width: 620px;
+}
+
+.social-note a {
+  color: var(--aqua);
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.subpage {
+  min-height: calc(100svh - 75px);
+  background:
+    linear-gradient(180deg, rgba(56, 213, 216, 0.08), transparent 420px),
+    var(--ink);
+}
+
+.page-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 92px 24px 36px;
+}
+
+.page-hero h1 {
+  max-width: 920px;
+  font-size: clamp(3.2rem, 8vw, 8rem);
+}
+
+.page-hero p:not(.eyebrow) {
+  max-width: 660px;
+  margin: 22px 0 0;
+  color: var(--mist);
+  font-size: clamp(1.08rem, 2vw, 1.32rem);
+}
+
+.page-section {
+  padding-top: 32px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -605,6 +627,10 @@ cite {
     margin-left: 20px;
     margin-right: 20px;
     padding: 24px;
+  }
+
+  .page-hero {
+    padding: 72px 20px 26px;
   }
 }
 
