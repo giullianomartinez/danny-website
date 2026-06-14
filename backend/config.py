@@ -11,7 +11,7 @@ class Settings:
     @classmethod
     def from_env(cls) -> "Settings":
         return cls(
-            whatsapp_number=os.getenv("WHATSAPP_NUMBER", "56953021437"),
+            whatsapp_number=os.getenv("WHATSAPP_NUMBER", "56900000000"),
             lead_storage_path=Path(
                 os.getenv("LEAD_STORAGE_PATH", "instance/contact_leads.jsonl")
             ),

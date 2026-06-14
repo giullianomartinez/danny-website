@@ -6,7 +6,6 @@ from backend.leads import LeadValidationError, create_lead, lead_to_whatsapp_url
 from backend.openapi import OPENAPI_SPEC
 
 
-WHATSAPP_NUMBER = "56953021437"
 WHATSAPP_MESSAGE = (
     "Hola Danny, quiero cotizar un evento. "
     "Fecha: ___ / Lugar: ___ / Tipo de evento: ___"

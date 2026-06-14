@@ -79,10 +79,10 @@ Variables:
 
 | Variable | Requerida | Ejemplo | Uso |
 | --- | --- | --- | --- |
-| `WHATSAPP_NUMBER` | Si | `56953021437` | Número real usado para generar enlaces `wa.me`. |
+| `WHATSAPP_NUMBER` | Si | `569XXXXXXXX` | Numero real usado para generar enlaces `wa.me`. |
 | `LEAD_STORAGE_PATH` | No en Vercel | `instance/contact_leads.jsonl` | Ruta local para guardar leads en JSONL. |
 
-Nota: en local, si `WHATSAPP_NUMBER` no existe, se usa `56953021437`.
+Nota: en local, si `WHATSAPP_NUMBER` no existe, se usa `56900000000` como numero de ejemplo.
 
 ## Pasos de despliegue en Vercel
 

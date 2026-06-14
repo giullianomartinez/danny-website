@@ -1,141 +1,88 @@
-# DVJ Danny Landing
+# Danny Website
 
-Sitio en Python/Flask para un DVJ y editor de video con trayectoria en Iquique.
+Landing page para DVJ Danny, enfocada en presentar servicios de DVJ, visuales en vivo y edicion audiovisual para eventos en Iquique.
 
-## Stack
+## URL publica
+
+Produccion en Vercel:
+
+https://danny-website-pi.vercel.app
+
+## Vista previa
+
+![DVJ Danny en cabina](public/media/dvj-danny.jpeg)
+
+![Hero visual del sitio](public/img/hero-dj-iquique.png)
+
+## Tecnologias
 
 - Python 3
-- Flask
+- Flask 3
 - Jinja templates
 - CSS responsive sin framework pesado
-- Imagen principal generada para el proyecto
+- Endpoints JSON para contenido, salud del servicio y contacto
+- Vercel para despliegue serverless
 
-## Herramientas gratis
+## Estructura
 
-No necesitas pagar por herramientas adicionales para trabajar este sitio fuera de Codex.
+```text
+backend/              Logica de contenido, configuracion, leads y OpenAPI
+public/               CSS e imagenes publicas
+templates/            Vistas Jinja
+tests/                Pruebas unitarias
+app.py                Aplicacion Flask
+vercel.json           Configuracion de Vercel
+requirements.txt      Dependencias Python
+```
 
-- Python: gratis y open source.
-- Flask: gratis y open source.
-- pip/venv: incluidos en el ecosistema gratuito de Python.
-- Editor recomendado: VS Code o cualquier editor de texto gratis.
-- Navegador: Chrome, Edge, Firefox o similar, gratis.
-- WhatsApp link: el enlace `wa.me` es gratis; solo debes reemplazar el numero por el real.
-- Publicacion opcional: Render, PythonAnywhere o Fly.io tienen alternativas gratuitas o planes sin costo, sujeto a sus limites vigentes.
+## Configuracion
 
-El sitio no depende de servicios pagados, CDNs pagos, plantillas premium ni librerias comerciales.
+El repositorio no incluye datos privados ni credenciales. El numero real de WhatsApp debe configurarse como variable de entorno:
 
-## Ejecutar
+| Variable | Requerida | Descripcion |
+| --- | --- | --- |
+| `WHATSAPP_NUMBER` | Si en produccion | Numero usado para generar enlaces `wa.me`, sin `+`, espacios ni guiones. |
+| `LEAD_STORAGE_PATH` | No | Ruta local para guardar contactos en JSONL. Por defecto: `instance/contact_leads.jsonl`. |
+
+Si `WHATSAPP_NUMBER` no esta definido, la app usa `56900000000` como valor de ejemplo para desarrollo.
+
+## Ejecutar localmente
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+$env:WHATSAPP_NUMBER = "569XXXXXXXX"
 python app.py
 ```
 
-Luego abre `http://127.0.0.1:5000`.
+Luego abre:
 
-## Backend
-
-La app expone endpoints JSON para que el frontend pueda leer contenido y enviar
-solicitudes de contacto.
-
-- `GET /api/health`: confirma que el servicio esta activo.
-- `GET /api/landing`: entrega el contenido editable de la landing.
-- `POST /api/contact`: recibe solicitudes y las guarda localmente en JSONL.
-- `GET /api/openapi.json`: entrega la especificacion OpenAPI.
-- `GET /api/docs`: abre la documentacion interactiva con Swagger UI.
-
-Con el servidor corriendo, abre `http://127.0.0.1:5000/api/docs` para probar
-los endpoints desde Swagger.
-
-Ejemplo de contacto:
-
-```powershell
-Invoke-RestMethod `
-  -Method Post `
-  -Uri http://127.0.0.1:5000/api/contact `
-  -ContentType "application/json" `
-  -Body '{"name":"Cliente Demo","contact":"+56 9 1234 5678","message":"Necesito DVJ para un evento","event_type":"Matrimonio","services":["DVJ","Resumen audiovisual"]}'
+```text
+http://127.0.0.1:5000
 ```
 
-Variables opcionales:
+## Endpoints
 
-- `WHATSAPP_NUMBER`: numero usado para generar el enlace `wa.me`.
-- `LEAD_STORAGE_PATH`: ruta donde se guardan los leads. Por defecto usa
-  `instance/contact_leads.jsonl`.
+- `GET /api/health`: estado del servicio.
+- `GET /api/landing`: contenido principal de la landing.
+- `POST /api/contact`: recibe una solicitud de contacto y devuelve un enlace de WhatsApp.
+- `GET /api/openapi.json`: especificacion OpenAPI.
+- `GET /api/docs`: documentacion interactiva con Swagger UI.
 
-## Tests
+## Pruebas
 
 ```powershell
 python -m unittest discover
 ```
 
-## Publicacion en Vercel
+## Despliegue
 
-Esta app esta lista para Vercel como proyecto Flask. Vercel detecta `Flask`
-en `requirements.txt` y usa el objeto `app` definido en `app.py`.
+El proyecto esta preparado para Vercel. Para publicar desde GitHub:
 
-### Opcion recomendada: GitHub + Vercel
+1. Subir este repositorio a GitHub.
+2. Importarlo en Vercel como proyecto nuevo.
+3. Configurar `WHATSAPP_NUMBER` en `Project > Settings > Environment Variables`.
+4. Desplegar la rama principal.
 
-1. Sube este proyecto a un repositorio en GitHub.
-2. Entra a [vercel.com](https://vercel.com) y crea una cuenta o inicia sesion.
-3. Ve a **Add New... > Project**.
-4. Importa el repositorio de GitHub.
-5. En la pantalla de configuracion deja:
-   - Configuracion de framework: **Other** o el valor detectado automaticamente.
-   - Root Directory: `./`
-   - Build Command: vacio.
-   - Output Directory: vacio.
-   - Install Command: vacio o automatico.
-6. Haz clic en **Deploy**.
-
-Cada vez que hagas `git push` a la rama principal, Vercel publicara una nueva
-version automaticamente.
-
-### Opcion alternativa: Vercel CLI
-
-```powershell
-npm i -g vercel
-vercel login
-vercel
-vercel --prod
-```
-
-Si usas CLI, responde las preguntas de Vercel aceptando el directorio actual
-como proyecto. Para pruebas locales con el entorno de Vercel puedes usar:
-
-```powershell
-vercel dev
-```
-
-## Planning
-
-### Objetivo
-
-Crear una landing que convierta visitas en contactos por WhatsApp para contratar servicios de DVJ, visuales en vivo y edicion de video en Iquique.
-
-### Audiencia
-
-- Personas organizando matrimonios, cumpleanos, fiestas privadas y eventos corporativos.
-- Marcas locales que necesitan musica, registro y contenido para redes.
-- Productoras que buscan un perfil con experiencia y criterio audiovisual.
-
-### Estructura de la landing
-
-1. Hero con propuesta clara, ubicacion y CTA.
-2. Indicadores de trayectoria para generar confianza.
-3. Presentacion del perfil y valor diferencial.
-4. Servicios: DVJ, video/resumen del evento y visuales en vivo.
-5. Paquetes iniciales para facilitar la cotizacion.
-6. Proceso de trabajo para reducir dudas.
-7. Testimonios editables.
-8. CTA final a WhatsApp.
-
-### Siguiente iteracion
-
-- Reemplazar nombre, telefono y precios por datos reales.
-- Agregar videos o piezas verticales embebidas desde Instagram/YouTube.
-- Conectar formulario o tracking de conversiones.
-- Optimizar SEO local con palabras clave de Iquique y tipos de evento.
-- Agregar galeria con fotos reales de eventos.
+La carpeta `.vercel/`, entornos virtuales, caches y archivos de leads locales estan ignorados por Git para evitar subir datos internos o personales.

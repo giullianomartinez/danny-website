@@ -38,10 +38,10 @@ class BackendTestCase(unittest.TestCase):
                 self.assertEqual(response.status_code, 200)
                 self.assertIn("DVJ Danny", response.get_data(as_text=True))
 
-    def test_default_whatsapp_links_use_real_number(self):
+    def test_default_whatsapp_links_use_demo_number(self):
         client = create_app(
             Settings(
-                whatsapp_number="56953021437",
+                whatsapp_number="56900000000",
                 lead_storage_path=Path(self.temp_dir.name) / "default-leads.jsonl",
             )
         ).test_client()
@@ -49,7 +49,7 @@ class BackendTestCase(unittest.TestCase):
         response = client.get("/")
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn("https://wa.me/56953021437", response.get_data(as_text=True))
+        self.assertIn("https://wa.me/56900000000", response.get_data(as_text=True))
 
     def test_tiktok_profile_appears_on_contact_surfaces(self):
         for path in ["/", "/contacto"]:
