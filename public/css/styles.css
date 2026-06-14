@@ -72,15 +72,21 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
-.brand span {
-  display: grid;
-  width: 34px;
+.brand-mark {
+  display: block;
+  width: 42px;
   aspect-ratio: 1;
-  place-items: center;
+  overflow: hidden;
   border: 1px solid rgba(56, 213, 216, 0.55);
   border-radius: 50%;
-  color: var(--aqua);
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  background: var(--ink);
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .nav {
@@ -187,15 +193,15 @@ h2 {
 
 h1 {
   max-width: 8ch;
-  font-size: clamp(4.8rem, 13vw, 12rem);
-  line-height: 0.78;
+  font-size: clamp(3.7rem, 10vw, 9.5rem);
+  line-height: 0.82;
   text-shadow: 0 0 34px rgba(241, 66, 154, 0.22);
 }
 
 h2 {
   max-width: 900px;
-  font-size: clamp(2.2rem, 5vw, 5rem);
-  line-height: 0.9;
+  font-size: clamp(1.9rem, 4vw, 4.1rem);
+  line-height: 0.96;
 }
 
 h3 {
@@ -208,7 +214,7 @@ h3 {
   max-width: 650px;
   margin: 26px 0 0;
   color: #efe6da;
-  font-size: clamp(1.12rem, 2vw, 1.55rem);
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
 }
 
 .hero-actions {
@@ -243,6 +249,14 @@ h3 {
 .button.secondary {
   border: 1px solid var(--line);
   background: rgba(247, 241, 231, 0.08);
+  color: var(--paper);
+}
+
+.button.tiktok {
+  border: 1px solid rgba(56, 213, 216, 0.46);
+  background:
+    linear-gradient(90deg, rgba(56, 213, 216, 0.16), rgba(241, 66, 154, 0.2)),
+    rgba(247, 241, 231, 0.08);
   color: var(--paper);
 }
 
@@ -502,6 +516,13 @@ cite {
   max-width: 780px;
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 .social-note {
   max-width: 620px;
 }
@@ -529,14 +550,14 @@ cite {
 
 .page-hero h1 {
   max-width: 920px;
-  font-size: clamp(3.2rem, 8vw, 8rem);
+  font-size: clamp(2.7rem, 6vw, 6.2rem);
 }
 
 .page-hero p:not(.eyebrow) {
   max-width: 660px;
   margin: 22px 0 0;
   color: var(--mist);
-  font-size: clamp(1.08rem, 2vw, 1.32rem);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
 }
 
 .page-section {
@@ -576,7 +597,7 @@ cite {
   }
 
   h1 {
-    font-size: clamp(4.1rem, 18vw, 7.4rem);
+    font-size: clamp(2.8rem, 12vw, 5.1rem);
   }
 
   .cue-sheet {
@@ -629,6 +650,10 @@ cite {
     padding: 24px;
   }
 
+  .contact-actions {
+    justify-content: flex-start;
+  }
+
   .page-hero {
     padding: 72px 20px 26px;
   }
@@ -643,8 +668,8 @@ cite {
     font-size: 0.88rem;
   }
 
-  .brand span {
-    width: 30px;
+  .brand-mark {
+    width: 34px;
   }
 
   .header-cta {
@@ -658,11 +683,12 @@ cite {
   }
 
   .hero-actions,
+  .contact-actions,
   .button {
     width: 100%;
   }
 
   h2 {
-    font-size: clamp(2rem, 14vw, 3.6rem);
+    font-size: clamp(1.55rem, 8.5vw, 2.35rem);
   }
 }

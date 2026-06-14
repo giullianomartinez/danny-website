@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Sitio para DVJ y editor de video en Iquique con años de trayectoria en eventos y contenido audiovisual."
+      content="Soy DVJ y editor de video en Iquique; preparo música, visuales y contenido audiovisual para eventos."
     >
     <title>{{ landing.artist }} | DVJ y Video en Iquique</title>
     <link rel="stylesheet" href="/css/styles.css">
@@ -13,7 +13,9 @@
   <body>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Ir al inicio">
-        <span>D</span>
+        <span class="brand-mark">
+          <img src="/media/dvj-danny.jpeg" alt="" aria-hidden="true">
+        </span>
         {{ landing.artist }}
       </a>
       <nav class="nav" aria-label="Navegacion principal">
@@ -22,7 +24,7 @@
         <a href="/proceso">Proceso</a>
         <a href="/contacto">Contacto</a>
       </nav>
-      <a class="header-cta" href="{{ landing.whatsapp_url }}">Reservar fecha</a>
+      <a class="header-cta" href="{{ landing.whatsapp_url }}">Reservar conmigo</a>
     </header>
 
     <main id="inicio">
@@ -39,12 +41,12 @@
           <h1>{{ landing.artist }}</h1>
           <p class="hero-copy">{{ landing.tagline }}</p>
           <div class="hero-actions">
-            <a class="button primary" href="{{ landing.whatsapp_url }}">Cotizar por WhatsApp</a>
-            <a class="button secondary" href="#servicios">Ver servicios</a>
+            <a class="button primary" href="{{ landing.whatsapp_url }}">Cotizar conmigo</a>
+            <a class="button secondary" href="#servicios">Ver mis servicios</a>
           </div>
         </div>
         <aside class="cue-sheet" aria-label="Resumen rápido">
-          <p>Disponible para</p>
+          <p>Me presento en</p>
           <strong>Eventos privados / marcas / productoras</strong>
           <span>Música + visuales + video</span>
         </aside>
@@ -62,7 +64,7 @@
       <section class="intro section">
         <div>
           <p class="eyebrow">Trayectoria</p>
-          <h2>Un evento pensado para sonar bien, verse bien y quedar registrado.</h2>
+          <h2>Trabajo cada evento para que suene bien, se vea bien y quede registrado.</h2>
         </div>
         <p>{{ landing.summary }}</p>
       </section>
@@ -70,7 +72,7 @@
       <section id="servicios" class="section">
         <div class="section-heading">
           <p class="eyebrow">Servicios</p>
-          <h2>Música y video para eventos con identidad propia.</h2>
+          <h2>Combino música y video para darle identidad propia a cada evento.</h2>
         </div>
         <div class="service-grid">
           {% for service in landing.services %}
@@ -86,7 +88,7 @@
       <section id="paquetes" class="packages section">
         <div class="section-heading">
           <p class="eyebrow">Paquetes</p>
-          <h2>Cuéntame tu fecha y armamos algo que calce con tu evento.</h2>
+          <h2>Armo cada propuesta según la fecha, el lugar y el tipo de evento.</h2>
         </div>
         <div class="package-grid">
           {% for package in landing.packages %}
@@ -107,7 +109,7 @@
       <section id="proceso" class="process section">
         <div class="section-heading">
           <p class="eyebrow">Proceso</p>
-          <h2>De la idea al evento sin vueltas.</h2>
+          <h2>Ordeno la idea y llego al evento sin vueltas.</h2>
         </div>
         <ol class="timeline">
           {% for step in landing.timeline %}
@@ -122,7 +124,7 @@
       <section class="proof section">
         <div class="section-heading">
           <p class="eyebrow">Confianza</p>
-          <h2>Comentarios que venden experiencia real.</h2>
+          <h2>Mi experiencia también se cuenta en la pista.</h2>
         </div>
         <div class="testimonial-grid">
           {% for testimonial in landing.testimonials %}
@@ -143,19 +145,19 @@
       <section id="contacto" class="contact">
         <div>
           <p class="eyebrow">Contacto</p>
-          <h2>Agenda una fecha en Iquique y alrededores.</h2>
+          <h2>Recibo fechas en Iquique y alrededores.</h2>
           <p>
-            Envía el tipo de evento, fecha, horario, lugar y si necesitas solo
+            Recibo el tipo de evento, fecha, horario, lugar y si la fecha necesita
             música, video o una producción completa.
           </p>
-          <p class="social-note">
-            {{ landing.tiktok.body }}
-            <a href="{{ landing.tiktok.url }}" target="_blank" rel="noopener">
-              @{{ landing.tiktok.handle }}
-            </a>
-          </p>
+          <p class="social-note">{{ landing.tiktok.body }}</p>
         </div>
-        <a class="button primary" href="{{ landing.whatsapp_url }}">Hablar por WhatsApp</a>
+        <div class="contact-actions">
+          <a class="button primary" href="{{ landing.whatsapp_url }}">Escribirme por WhatsApp</a>
+          <a class="button tiktok" href="{{ landing.tiktok.url }}" target="_blank" rel="noopener">
+            Ver mi TikTok
+          </a>
+        </div>
       </section>
     </main>
   </body>
