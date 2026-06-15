@@ -16,7 +16,7 @@ LANDING = {
     ),
     "stats": [
         {"value": "+12", "label": "años tocando eventos en el norte"},
-        {"value": "+500", "label": "pistas, matrimonios y activaciones"},
+        {"value": "+500", "label": "pistas, matrimonios y fiestas"},
         {"value": "4K", "label": "edición para videos y resúmenes"},
     ],
     "services": [
@@ -68,18 +68,17 @@ LANDING = {
     "packages": [
         {
             "name": "Evento Esencial",
-            "price": "Desde $80.000",
+            "price": "Desde $60.000",
             "fit": "Recomendado para cumpleaños, celebraciones privadas y eventos pequeños.",
             "items": ["Presentación DVJ hasta 3 horas", "Lista musical preparada", "Coordinación previa"],
         },
         {
             "name": "Fiesta Completa",
-            "price": "Desde $150.000",
+            "price": "Desde $100.000",
             "fit": "Pensado para matrimonios, empresas y fiestas con mayor producción.",
             "items": [
                 "Presentación DVJ extendida",
                 "Sonido e iluminación base",
-                "Registro audiovisual corto",
             ],
         },
         {
