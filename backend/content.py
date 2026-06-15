@@ -1,6 +1,6 @@
 LANDING = {
     "artist": "DVJ Danny",
-    "location": "Iquique, Chile",
+    "location": "Iquique",
     "kicker": "DVJ + video + visuales",
     "tiktok": {
         "handle": "dvj._dannyiqq",
