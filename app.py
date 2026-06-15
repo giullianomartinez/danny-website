@@ -4,6 +4,11 @@ from backend.config import Settings
 from backend.content import LANDING
 from backend.leads import LeadValidationError, create_lead, lead_to_whatsapp_url
 from backend.openapi import OPENAPI_SPEC
+from backend.reviews import (
+    ReviewValidationError,
+    create_review,
+    list_reviews,
+)
 
 
 WHATSAPP_MESSAGE = (
@@ -28,7 +33,8 @@ def create_app(settings: Settings | None = None) -> Flask:
 
     @app.route("/")
     def home():
-        return render_template("index.html", landing=landing)
+        reviews = [review.public_dict() for review in list_reviews(settings)]
+        return render_template("index.html", landing=landing, reviews=reviews)
 
     @app.get("/servicios")
     def servicios_page():
@@ -42,10 +48,6 @@ def create_app(settings: Settings | None = None) -> Flask:
     def videos_page():
         return render_template("section_page.html", landing=landing, page="videos")
 
-    @app.get("/proceso")
-    def proceso_page():
-        return render_template("section_page.html", landing=landing, page="proceso")
-
     @app.get("/contacto")
     def contacto_page():
         return render_template("section_page.html", landing=landing, page="contacto")
@@ -57,6 +59,12 @@ def create_app(settings: Settings | None = None) -> Flask:
     @app.get("/api/landing")
     def landing_content():
         return jsonify(landing)
+
+    @app.get("/api/reviews")
+    def reviews_index():
+        return jsonify(
+            {"reviews": [review.public_dict() for review in list_reviews(settings)]}
+        )
 
     @app.get("/api/openapi.json")
     def openapi_json():
@@ -102,6 +110,15 @@ def create_app(settings: Settings | None = None) -> Flask:
                 "whatsapp_url": lead_to_whatsapp_url(lead, settings),
             }
         ), 201
+
+    @app.post("/api/reviews")
+    def reviews_create():
+        try:
+            review = create_review(request.get_json(silent=True) or {}, settings)
+        except ReviewValidationError as exc:
+            return jsonify({"error": str(exc)}), 400
+
+        return jsonify({"review": review.public_dict()}), 201
 
     return app
 

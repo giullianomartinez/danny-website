@@ -22,7 +22,6 @@
         <a href="/servicios">Servicios</a>
         <a href="/videos">Videos</a>
         <a href="/paquetes">Paquetes</a>
-        <a href="/proceso">Proceso</a>
         <a href="/contacto">Contacto</a>
       </nav>
       <a class="header-cta" href="{{ landing.whatsapp_url }}">Reservar fecha</a>
@@ -133,39 +132,57 @@
         </div>
       </section>
 
-      <section id="proceso" class="process section">
-        <div class="section-heading">
-          <p class="eyebrow">Proceso</p>
-          <h2>De la idea al evento sin vueltas.</h2>
-        </div>
-        <ol class="timeline">
-          {% for step in landing.timeline %}
-            <li>
-              <strong>{{ step.title }}</strong>
-              <span>{{ step.body }}</span>
-            </li>
-          {% endfor %}
-        </ol>
-      </section>
-
       <section class="proof section">
         <div class="section-heading">
           <p class="eyebrow">Confianza</p>
           <h2>La experiencia también se cuenta en la pista.</h2>
         </div>
-        <div class="testimonial-grid">
-          {% for testimonial in landing.testimonials %}
-            <blockquote>
-              {% if testimonial.quote %}
-                <p>{{ testimonial.quote }}</p>
-              {% else %}
+        <div class="testimonial-grid" id="review-list" aria-live="polite">
+          {% if reviews %}
+            {% for review in reviews %}
+              <blockquote class="review-quote">
+                <div class="review-stars" aria-label="{{ review.rating }} de 5 estrellas">{{ "★" * review.rating }}{{ "☆" * (5 - review.rating) }}</div>
+                <p>{{ review.comment }}</p>
+                <cite>{{ review.name }}</cite>
+              </blockquote>
+            {% endfor %}
+          {% else %}
+            {% for testimonial in landing.testimonials %}
+              <blockquote class="empty-review">
                 <p class="empty-copy"></p>
-              {% endif %}
-              {% if testimonial.author %}
-                <cite>{{ testimonial.author }}</cite>
-              {% endif %}
-            </blockquote>
-          {% endfor %}
+              </blockquote>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </section>
+
+      <section id="calificacion" class="reviews section">
+        <div class="section-heading">
+          <p class="eyebrow">Calificacion</p>
+          <h2>Deja tu experiencia</h2>
+        </div>
+        <div class="review-layout single">
+          <form class="review-form" id="review-form">
+            <label>
+              Nombre
+              <input name="name" type="text" autocomplete="name" maxlength="80" required>
+            </label>
+            <fieldset class="rating-field">
+              <legend>Calificacion</legend>
+              <div class="star-options">
+                {% for value in [1, 2, 3, 4, 5] %}
+                  <input id="rating-{{ value }}" name="rating" type="radio" value="{{ value }}" {% if value == 5 %}checked{% endif %}>
+                  <label for="rating-{{ value }}" aria-label="{{ value }} estrellas">{{ value }}★</label>
+                {% endfor %}
+              </div>
+            </fieldset>
+            <label>
+              Comentario
+              <textarea name="comment" rows="5" maxlength="600" required></textarea>
+            </label>
+            <button class="button primary" type="submit">Publicar calificacion</button>
+            <p class="form-status" id="review-status" role="status"></p>
+          </form>
         </div>
       </section>
 
@@ -187,5 +204,59 @@
         </div>
       </section>
     </main>
+    <script>
+      const reviewForm = document.querySelector("#review-form");
+      const reviewList = document.querySelector("#review-list");
+      const reviewStatus = document.querySelector("#review-status");
+
+      function renderReview(review) {
+        const card = document.createElement("blockquote");
+        card.className = "review-quote";
+
+        const stars = document.createElement("div");
+        stars.className = "review-stars";
+        stars.setAttribute("aria-label", `${review.rating} de 5 estrellas`);
+        stars.textContent = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+
+        const comment = document.createElement("p");
+        comment.textContent = review.comment;
+
+        const author = document.createElement("cite");
+        author.textContent = review.name;
+
+        card.append(stars, comment, author);
+        return card;
+      }
+
+      reviewForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        reviewStatus.textContent = "Guardando calificacion...";
+
+        const formData = new FormData(reviewForm);
+        const payload = {
+          name: formData.get("name"),
+          rating: formData.get("rating"),
+          comment: formData.get("comment"),
+        };
+
+        const response = await fetch("/api/reviews", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const body = await response.json();
+
+        if (!response.ok) {
+          reviewStatus.textContent = body.error || "No se pudo guardar la calificacion.";
+          return;
+        }
+
+        reviewList.querySelector(".empty-review")?.remove();
+        reviewList.prepend(renderReview(body.review));
+        reviewForm.reset();
+        reviewForm.rating.value = "5";
+        reviewStatus.textContent = "Gracias, tu calificacion ya esta publicada.";
+      });
+    </script>
   </body>
 </html>

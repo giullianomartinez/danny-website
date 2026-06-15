@@ -12,6 +12,7 @@ class BackendTestCase(unittest.TestCase):
         settings = Settings(
             whatsapp_number="56911111111",
             lead_storage_path=Path(self.temp_dir.name) / "leads.jsonl",
+            review_storage_path=Path(self.temp_dir.name) / "reviews.jsonl",
         )
         self.client = create_app(settings).test_client()
 
@@ -31,7 +32,7 @@ class BackendTestCase(unittest.TestCase):
         self.assertEqual(response.get_json()["artist"], "DVJ Danny")
 
     def test_navbar_pages_load(self):
-        for path in ["/servicios", "/paquetes", "/proceso", "/contacto"]:
+        for path in ["/servicios", "/paquetes", "/videos", "/contacto"]:
             with self.subTest(path=path):
                 response = self.client.get(path)
 
@@ -43,6 +44,7 @@ class BackendTestCase(unittest.TestCase):
             Settings(
                 whatsapp_number="56900000000",
                 lead_storage_path=Path(self.temp_dir.name) / "default-leads.jsonl",
+                review_storage_path=Path(self.temp_dir.name) / "default-reviews.jsonl",
             )
         ).test_client()
 
@@ -70,6 +72,7 @@ class BackendTestCase(unittest.TestCase):
         self.assertIn("/api/health", spec["paths"])
         self.assertIn("/api/landing", spec["paths"])
         self.assertIn("/api/contact", spec["paths"])
+        self.assertIn("/api/reviews", spec["paths"])
 
     def test_swagger_ui_page_loads(self):
         response = self.client.get("/api/docs")
@@ -102,6 +105,43 @@ class BackendTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertEqual(body["lead"]["name"], "Cliente Demo")
         self.assertIn("https://wa.me/56911111111", body["whatsapp_url"])
+
+    def test_reviews_start_empty(self):
+        response = self.client.get("/api/reviews")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json()["reviews"], [])
+
+    def test_review_requires_rating_between_one_and_five(self):
+        response = self.client.post(
+            "/api/reviews",
+            json={"name": "Cliente Demo", "rating": 6, "comment": "Buen evento."},
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("1 y 5", response.get_json()["error"])
+
+    def test_review_saves_and_appears_on_home(self):
+        response = self.client.post(
+            "/api/reviews",
+            json={
+                "name": "Cliente Demo",
+                "rating": 5,
+                "comment": "Excelente musica y energia.",
+            },
+        )
+        body = response.get_json()
+
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(body["review"]["rating"], 5)
+
+        reviews_response = self.client.get("/api/reviews")
+        self.assertEqual(len(reviews_response.get_json()["reviews"]), 1)
+
+        home_response = self.client.get("/")
+        html = home_response.get_data(as_text=True)
+        self.assertIn("Excelente musica y energia.", html)
+        self.assertIn("Cliente Demo", html)
 
 
 if __name__ == "__main__":

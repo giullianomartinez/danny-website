@@ -13,6 +13,7 @@ OPENAPI_SPEC = {
         {"name": "System", "description": "Estado del backend."},
         {"name": "Landing", "description": "Contenido publico de la landing."},
         {"name": "Contact", "description": "Recepcion de solicitudes de contacto."},
+        {"name": "Reviews", "description": "Calificaciones publicas de clientes."},
     ],
     "paths": {
         "/api/health": {
@@ -89,6 +90,57 @@ OPENAPI_SPEC = {
                     },
                 },
             }
+        },
+        "/api/reviews": {
+            "get": {
+                "tags": ["Reviews"],
+                "summary": "Listar calificaciones",
+                "responses": {
+                    "200": {
+                        "description": "Calificaciones publicadas.",
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": "#/components/schemas/ReviewList"}
+                            }
+                        },
+                    }
+                },
+            },
+            "post": {
+                "tags": ["Reviews"],
+                "summary": "Crear calificacion",
+                "requestBody": {
+                    "required": True,
+                    "content": {
+                        "application/json": {
+                            "schema": {"$ref": "#/components/schemas/ReviewRequest"},
+                            "example": {
+                                "name": "Cliente Demo",
+                                "rating": 5,
+                                "comment": "Excelente musica y muy buena energia.",
+                            },
+                        }
+                    },
+                },
+                "responses": {
+                    "201": {
+                        "description": "Calificacion guardada.",
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": "#/components/schemas/ReviewResponse"}
+                            }
+                        },
+                    },
+                    "400": {
+                        "description": "Datos incompletos o invalidos.",
+                        "content": {
+                            "application/json": {
+                                "schema": {"$ref": "#/components/schemas/ErrorResponse"}
+                            }
+                        },
+                    },
+                },
+            },
         },
         "/api/openapi.json": {
             "get": {
@@ -197,6 +249,48 @@ OPENAPI_SPEC = {
                 "properties": {
                     "lead": {"$ref": "#/components/schemas/Lead"},
                     "whatsapp_url": {"type": "string", "format": "uri"},
+                },
+            },
+            "ReviewRequest": {
+                "type": "object",
+                "required": ["name", "rating", "comment"],
+                "properties": {
+                    "name": {"type": "string", "example": "Cliente Demo"},
+                    "rating": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5,
+                        "example": 5,
+                    },
+                    "comment": {
+                        "type": "string",
+                        "example": "Excelente musica y muy buena energia.",
+                    },
+                },
+            },
+            "ReviewResponse": {
+                "type": "object",
+                "required": ["review"],
+                "properties": {"review": {"$ref": "#/components/schemas/Review"}},
+            },
+            "ReviewList": {
+                "type": "object",
+                "required": ["reviews"],
+                "properties": {
+                    "reviews": {
+                        "type": "array",
+                        "items": {"$ref": "#/components/schemas/Review"},
+                    }
+                },
+            },
+            "Review": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "name": {"type": "string"},
+                    "rating": {"type": "integer", "minimum": 1, "maximum": 5},
+                    "comment": {"type": "string"},
+                    "created_at": {"type": "string", "format": "date-time"},
                 },
             },
             "Lead": {

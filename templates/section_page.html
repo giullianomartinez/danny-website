@@ -8,7 +8,7 @@
       content="{{ landing.artist }} en Iquique: música, visuales y video para eventos."
     >
     <title>
-      {% if page == "servicios" %}Servicios{% elif page == "paquetes" %}Paquetes{% elif page == "proceso" %}Proceso{% else %}Contacto{% endif %}
+      {% if page == "servicios" %}Servicios{% elif page == "paquetes" %}Paquetes{% elif page == "videos" %}Videos{% else %}Contacto{% endif %}
       | {{ landing.artist }}
     </title>
     <link rel="stylesheet" href="/css/styles.css">
@@ -25,7 +25,6 @@
         <a href="/servicios">Servicios</a>
         <a href="/videos">Videos</a>
         <a href="/paquetes">Paquetes</a>
-        <a href="/proceso">Proceso</a>
         <a href="/contacto">Contacto</a>
       </nav>
       <a class="header-cta" href="{{ landing.whatsapp_url }}">Reservar fecha</a>
@@ -92,22 +91,6 @@
               </article>
             {% endfor %}
           </div>
-        </section>
-      {% elif page == "proceso" %}
-        <section class="page-hero">
-          <p class="eyebrow">Proceso</p>
-          <h1>De la idea al evento sin vueltas.</h1>
-          <p>La idea es llegar con todo conversado, ordenado y listo para que el evento fluya.</p>
-        </section>
-        <section class="section page-section">
-          <ol class="timeline">
-            {% for step in landing.timeline %}
-              <li>
-                <strong>{{ step.title }}</strong>
-                <span>{{ step.body }}</span>
-              </li>
-            {% endfor %}
-          </ol>
         </section>
       {% else %}
         <section class="page-hero">
